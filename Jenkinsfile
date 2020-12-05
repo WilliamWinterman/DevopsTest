@@ -2,10 +2,10 @@ pipeline {
   agent any
 
   stages {  
-    stage("Build") {    
+    stage("Build and Deploy") {    
       steps {
-      echo 'building the application'
-      sh 'ls'
+      echo 'building & deploying the application'
+      sh 'cp WebService.js ~/home/centos'
       }      
     }
   }
