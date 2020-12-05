@@ -5,7 +5,7 @@ pipeline {
     stage("Build and Deploy") {    
       steps {
       echo 'building & deploying the application'
-      sh 'cp WebService.js /home/centos'
+      sh 'sudo cp WebService.js /home/centos'
       }      
     }
   }
