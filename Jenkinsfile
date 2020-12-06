@@ -2,18 +2,26 @@ pipeline {
   agent any
 
   stages {  
-    stage("Build and Deploy") {    
+    stage("Deploy") {    
       steps {
-      echo 'Building & deploying the application'
-      //sh 'sudo rm /var/www/CounterService/code/WebService.js || true' //Deletes current webservice file in the CounterService folder - will continue if remove fails
+      echo 'Deploying the application'
       sh 'sudo cp WebService.js /var/www/CounterService/code' // Copies/overwrites the WebService.js to the CounterService/code folder
       sh 'sudo pm2 delete all' // deletes all current running nodejs instances
       sh 'sudo pm2 start -i max /var/www/CounterService/code/WebService.js' // starts WebService.js as a service in cluster mode for
       sh 'sudo pm2 scale WebService 2' //Scales the app to 2 instances for HA and LB
       }
     }
+    
+    stage("Build") {    
+      steps {
+      echo 'Building the application inside a container'
+      sh 'docker ps -a | grep counterserviceapp:1.0 | cut -d " " -f1 | xargs docker stop' // stops all containers created from counterserviceapp image.
+      sh 'docker ps -a | grep counterserviceapp:1.0 | cut -d " " -f1 | xargs docker rm'  // removes all containers created from counterserviceapp image.
+      sh 'sudo docker run -d -p 81:80 counterserviceapp:1.0' // starts a new container from the counterserviceapp image and maps it to port 81
+      }
+    }
 
-    stage ("Testing") {
+    stage ("Test") {
       steps {
      echo 'Testing the application'
         sh '''
