@@ -18,7 +18,7 @@ pipeline {
      echo 'Testing the application'
         sh '''
      #!/bin/bash
-     if [ $(curl -w "%{http_code}\n" http://localhost:80/getCounter -o /dev/null -s) = "200" ]; #checking that the status code is 200
+     if [ $(curl -w "%{http_code}\n" http://localhost:80/getRequest -o /dev/null -s) = "200" ]; #checking that the status code is 200
      then 
      echo "Application is running"
      else 
