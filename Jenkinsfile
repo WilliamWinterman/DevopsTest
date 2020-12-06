@@ -15,14 +15,14 @@ pipeline {
     stage ("Testing") {
       steps {
      echo 'Testing the application'
-        script {
-     if [ $(curl -w "%{http_code}\n" http://localhost:3000/getCounter -o /dev/null -s) = "200" ]; //checking that the status code is 200
+        sh 
+     'if [ $(curl -w "%{http_code}\n" http://localhost:3000/getCounter -o /dev/null -s) = "200" ]; //checking that the status code is 200
      then 
-     echo 'success'
+     echo "success"
      else 
-     echo 'failed'
-     fi
-         }
+     echo "failed"
+     fi'
+         
        }      
      }
    }  
