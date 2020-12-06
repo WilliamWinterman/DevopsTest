@@ -15,8 +15,8 @@ pipeline {
     stage("Build") {    
       steps {
       echo 'Building the application inside a container'
-      sh 'docker ps -a | grep counterserviceapp:1.0 | cut -d " " -f1 | xargs docker stop' // stops all containers created from counterserviceapp image.
-      sh 'docker ps -a | grep counterserviceapp:1.0 | cut -d " " -f1 | xargs docker rm'  // removes all containers created from counterserviceapp image.
+      sh 'sudo docker ps -a | grep counterserviceapp:1.0 | cut -d " " -f1 | xargs docker stop' // stops all containers created from counterserviceapp image.
+      sh 'sudo docker ps -a | grep counterserviceapp:1.0 | cut -d " " -f1 | xargs docker rm'  // removes all containers created from counterserviceapp image.
       sh 'sudo docker run -d -p 81:80 counterserviceapp:1.0' // starts a new container from the counterserviceapp image and maps it to port 81
       }
     }
