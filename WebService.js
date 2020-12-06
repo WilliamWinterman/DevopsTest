@@ -5,7 +5,7 @@ var counter = 0
 
 // GET method route, when recieved a get request it will respond with the counter of post requests.
 app.get('/getCounter', function (req, res) {
-  res.send({data: counter})
+  res.send("Post Counter: " + counter)
   console.log(counter);
   })
   
