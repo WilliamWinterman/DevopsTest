@@ -14,4 +14,4 @@ app.post('/postCounter', function (req, res) {
     counter++
 
   })
-  app.listen(3000)
+  app.listen(80)
