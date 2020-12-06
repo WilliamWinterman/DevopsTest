@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express()
-app.disable('etag'); //will return 200 http status code instead of 302
+app.disable('etag'); //will return 200 http status code on success
 var counter = 0
 
 // GET method route, when recieved a get request it will respond with the counter of post requests.
