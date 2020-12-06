@@ -20,7 +20,7 @@ pipeline {
      then 
      echo "Application is running"
      else 
-     echo "Application isn't running"
+     echo "Application is not running"
      fi'''
          
        }      
