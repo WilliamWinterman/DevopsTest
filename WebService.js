@@ -12,7 +12,7 @@ app.get('/getRequest', function (req, res) {
 // POST method route
 app.post('/getRequest', function (req, res) {
     counter++
-    get.send('POST request happened')
+    res.send('POST request happened')
 
   })
   app.listen(80)
