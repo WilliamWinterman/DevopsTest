@@ -1,0 +1,13 @@
+{
+  "name": "docker_webservice_app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "William Winterman",
+  "main": "WebService.js",
+  "scripts": {
+    "start": "node WebService.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
