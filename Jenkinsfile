@@ -8,7 +8,7 @@ pipeline {
       sh 'sudo cp WebService.js /var/www/CounterService/code' // Copies/overwrites the WebService.js to the CounterService/code folder
       sh 'sudo pm2 delete all || true' // deletes all current running nodejs instances
       sh 'sudo pm2 start -i max /var/www/CounterService/code/WebService.js' // starts WebService.js as a service in cluster mode
-      sh 'sudo pm2 scale WebService 2' //Scales the app to 2 instances for HA and LB
+      
       }
     }
     
